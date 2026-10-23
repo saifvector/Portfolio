@@ -13,9 +13,9 @@ export default function OpeningSection() {
     offset: ["start start", "end start"]
   });
 
-  const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
-  const y = useTransform(scrollYProgress, [0, 0.6], [0, -80]);
-  const scale = useTransform(scrollYProgress, [0, 0.6], [1, 0.96]);
+  const opacity = useTransform(scrollYProgress, [0, 0.9], [1, 0.2]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, -60]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.98]);
 
   return (
     <section

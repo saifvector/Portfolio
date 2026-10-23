@@ -42,7 +42,7 @@ export default function HomePage() {
       <ScrollProgress />
 
       {/* Main Experience */}
-      <div className={`relative min-h-screen transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+      <div className="relative min-h-screen">
         <Navbar />
 
         <main id="hero" className="relative z-10">

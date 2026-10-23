@@ -44,7 +44,7 @@ const CREDENTIALS = [
 
 export default function CredentialsSection() {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: false, margin: "-10% 0px -10% 0px" });
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
   const ease = [0.16, 1, 0.3, 1] as const;
 
   return (

@@ -5,7 +5,7 @@ import { motion, useInView } from 'framer-motion';
 
 export default function StatementSection() {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: false, margin: "-20% 0px -20% 0px" });
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   const sentences = [
     "THINK LIKE A RESEARCHER.",

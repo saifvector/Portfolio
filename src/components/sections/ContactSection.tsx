@@ -6,7 +6,7 @@ import { OWNER_INFO } from '../../data/portfolioData';
 
 export default function ContactSection() {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: false, margin: "-15% 0px -15% 0px" });
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);

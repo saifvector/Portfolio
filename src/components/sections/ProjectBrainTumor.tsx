@@ -5,7 +5,7 @@ import { motion, useInView } from 'framer-motion';
 
 export default function ProjectBrainTumor() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { once: false, margin: "-15% 0px -15% 0px" });
+  const isInView = useInView(containerRef, { once: true, amount: 0.1 });
 
   return (
     <section

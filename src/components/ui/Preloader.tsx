@@ -29,7 +29,7 @@ export default function Preloader({ onLoaded }: PreloaderProps) {
             opacity: 0, 
             transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } 
           }}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-[#050505] text-white px-6 select-none"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-[#050505] text-white px-6 select-none pointer-events-none"
         >
           <motion.div
             initial={{ opacity: 0, y: 10 }}

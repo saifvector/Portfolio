@@ -50,7 +50,7 @@ const TIMELINE_DATA = [
 
 export default function CertificationsSection() {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: false, margin: "-15% 0px -15% 0px" });
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   return (
     <section

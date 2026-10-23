@@ -21,7 +21,7 @@ const TECH = [
 
 export default function TechStackSection() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { once: false, margin: "-10% 0px -10% 0px" });
+  const isInView = useInView(containerRef, { once: true, amount: 0.1 });
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
