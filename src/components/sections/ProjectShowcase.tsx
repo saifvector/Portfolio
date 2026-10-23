@@ -3,6 +3,7 @@
 import React, { useRef, useEffect } from 'react';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import WorksWheel, { type WorksWheelItem } from '../ui/works-wheel';
+import PerspectiveTunnelHero, { type TunnelItem } from '../ui/perspective-tunnel-hero';
 
 /* ─── Project data ─── */
 interface ProjectConfig {
@@ -110,6 +111,63 @@ const WHEEL_PROJECTS: WorksWheelItem[] = [
     title: "Cyber Shield",
     image: "https://www.crafterui.com/art/red-ribbon-typography.jpg",
     href: "#cortex-nids",
+  },
+];
+
+const TUNNEL_PROJECTS: TunnelItem[] = [
+  {
+    title: "Cortex NIDS",
+    tag: "Network Threat Defense // 99.77% Acc",
+    src: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=900&auto=format&fit=crop",
+    href: "#cortex-nids",
+  },
+  {
+    title: "Brain Tumor AI",
+    tag: "Clinical MRI Vision // U-Net",
+    src: "https://images.unsplash.com/photo-1559757175-5700dde675bc?q=80&w=900&auto=format&fit=crop",
+    href: "#brain-tumor",
+  },
+  {
+    title: "Nutrient AI",
+    tag: "Preventive Healthcare // SHAP",
+    src: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?q=80&w=900&auto=format&fit=crop",
+    href: "#nutrient-ai",
+  },
+  {
+    title: "Aura Voice AI",
+    tag: "Edge Automation // Local LLM",
+    src: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=900&auto=format&fit=crop",
+    href: "#aura",
+  },
+  {
+    title: "Deepfake Detection",
+    tag: "Forensic Computer Vision",
+    src: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=900&auto=format&fit=crop",
+    href: "#cortex-nids",
+  },
+  {
+    title: "CSIFormer RF Sensing",
+    tag: "Channel State Transformers",
+    src: "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?q=80&w=900&auto=format&fit=crop",
+    href: "#projects",
+  },
+  {
+    title: "Autonomous Agents",
+    tag: "Distributed Swarm Reasoning",
+    src: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=900&auto=format&fit=crop",
+    href: "#cortex-nids",
+  },
+  {
+    title: "AI Job Copilot",
+    tag: "Autonomous Workflow Orchestration",
+    src: "https://images.unsplash.com/photo-1618172193763-c511deb635ca?q=80&w=900&auto=format&fit=crop",
+    href: "#aura",
+  },
+  {
+    title: "PharmaScan",
+    tag: "Bioinformatics Comparative Engine",
+    src: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?q=80&w=900&auto=format&fit=crop",
+    href: "#nutrient-ai",
   },
 ];
 
@@ -392,6 +450,39 @@ export default function ProjectShowcase() {
           <ProjectSection key={p.number} project={p} index={i} />
         ))}
       </div>
+
+      {/* ─── 3D Perspective Tunnel Corridor ─── */}
+      <section className="pt-24 pb-28 px-6 sm:px-12 md:px-20 max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-white/10 mb-8">
+          <div>
+            <div className="flex items-center gap-3 mb-4">
+              <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+              <span className="text-[10px] font-mono tracking-[0.25em] text-[#888] uppercase">
+                Spatial Corridor // Research Depth
+              </span>
+            </div>
+            <h2 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white uppercase leading-[0.95]">
+              INTO THE<br />RESEARCH ETHER.
+            </h2>
+          </div>
+          <p className="text-sm text-[#888] leading-relaxed max-w-md">
+            Fly through the spatial 3D corridor of autonomous models, transformers, and edge intelligences. Scroll your wheel or trackpad to accelerate forward in Z-space.
+          </p>
+        </div>
+
+        <PerspectiveTunnelHero
+          items={TUNNEL_PROJECTS}
+          badge="WARP DRIVE // SPATIAL ARCHIVE"
+          headline={
+            <>
+              ARCHITECTING
+              <br />
+              INTELLIGENCE.
+            </>
+          }
+          subtitle="Scroll trackpad or mouse wheel to fly through the 3D research corridor."
+        />
+      </section>
     </div>
   );
 }
