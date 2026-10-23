@@ -1,89 +1,147 @@
 'use client';
 
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 
 const MILESTONES = [
-  { year: "2023", text: "Learning foundations.", detail: "Mathematics, algorithms, and first encounters with machine learning." },
-  { year: "2024", text: "AI and machine learning projects.", detail: "IIT Hyderabad research internship. AWS cloud engineering. Deep learning explorations." },
-  { year: "2025", text: "Healthcare AI research.", detail: "Brain tumor segmentation. Nutrient deficiency prediction. Explainable diagnostics." },
-  { year: "2026", text: "Cybersecurity systems and explainable AI.", detail: "CORTEX NIDS. Production-grade detection. SHAP-driven transparency." },
-  { year: "FUTURE", text: "Building production-scale intelligent systems.", detail: "Research-driven engineering at the intersection of healthcare, security, and automation." },
+  {
+    year: "2023",
+    status: "Foundations",
+    text: "Theoretical rigor & algorithm design.",
+    detail: "Linear algebra, probability theory, discrete mathematics, and initial neural network implementations from scratch.",
+    highlight: "Core Fundamentals",
+  },
+  {
+    year: "2024",
+    status: "Applied AI",
+    text: "Research residency & deep learning.",
+    detail: "AI research internship at IIT Hyderabad. Cloud infrastructure engineering on AWS. High-throughput inference pipelines.",
+    highlight: "IIT Hyderabad Residency",
+  },
+  {
+    year: "2025",
+    status: "Clinical AI",
+    text: "Healthcare intelligence & segmentation.",
+    detail: "3D brain tumor MRI segmentation with U-Net. Explainable nutrient deficiency prediction using SHAP interpretability.",
+    highlight: "Healthcare Systems",
+  },
+  {
+    year: "2026",
+    status: "Production",
+    text: "Cybersecurity & real-time detection.",
+    detail: "CORTEX NIDS: production-grade intrusion detection achieving 99.77% accuracy and 2.91ms sub-millisecond inference.",
+    highlight: "CORTEX NIDS (99.77%)",
+  },
+  {
+    year: "FUTURE",
+    status: "Horizon",
+    text: "Production-scale autonomous systems.",
+    detail: "Architecting agentic reasoning frameworks at the intersection of medicine, offensive/defensive security, and robotics.",
+    highlight: "Autonomous Frontier",
+  },
 ];
 
 export default function TimelineJourneySection() {
   const containerRef = useRef<HTMLDivElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
-
-  // Map vertical scroll to horizontal translation
-  const x = useTransform(scrollYProgress, [0, 1], ['0%', '-75%']);
-
-  // Progress line
-  const lineWidth = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
+  const isInView = useInView(containerRef, { once: true, amount: 0.1 });
+  const ease = [0.16, 1, 0.3, 1] as const;
 
   return (
     <section
       id="journey"
       ref={containerRef}
-      className="relative"
-      style={{ height: `${MILESTONES.length * 45}vh` }}
+      className="relative px-6 sm:px-12 md:px-20 py-16 sm:py-24 max-w-7xl mx-auto border-t border-white/5 scroll-mt-20"
     >
-      <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-center">
-        {/* Section label */}
-        <div className="px-6 sm:px-12 md:px-20 mb-8">
-          <div className="text-[10px] uppercase tracking-[0.3em] text-[#555] font-mono">
-            THE JOURNEY
-          </div>
+      {/* Header */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-white/10 mb-12">
+        <div>
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
+            transition={{ duration: 0.7, ease }}
+            className="flex items-center gap-3 mb-3"
+          >
+            <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+            <span className="text-[10px] font-mono tracking-[0.25em] text-[#888] uppercase">
+              04 // The Journey
+            </span>
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.9, delay: 0.1, ease }}
+            className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white uppercase leading-[0.95]"
+          >
+            RESEARCH &<br />TRAJECTORY.
+          </motion.h2>
         </div>
-
-        {/* Progress line */}
-        <div className="px-6 sm:px-12 md:px-20 mb-12">
-          <div className="h-px bg-white/10 relative">
-            <motion.div
-              style={{ width: lineWidth }}
-              className="absolute inset-y-0 left-0 bg-white/40"
-            />
-          </div>
-        </div>
-
-        {/* Horizontal scroll cards */}
-        <motion.div
-          style={{ x }}
-          className="flex gap-0 pl-6 sm:pl-12 md:pl-20"
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
+          transition={{ duration: 0.8, delay: 0.2, ease }}
+          className="text-sm text-[#888] leading-relaxed max-w-md"
         >
-          {MILESTONES.map((m, idx) => (
-            <div
-              key={m.year}
-              className="flex-shrink-0 w-[80vw] sm:w-[50vw] md:w-[40vw] lg:w-[30vw] pr-12 sm:pr-16 md:pr-20"
-            >
-              <div className="space-y-6">
-                {/* Year */}
-                <div className="text-6xl sm:text-7xl md:text-8xl font-bold tracking-tight text-white/10 leading-none">
-                  {m.year}
-                </div>
+          A continuous timeline from theoretical mathematics and research residencies to hardened production-grade intelligent engines.
+        </motion.p>
+      </div>
 
-                {/* Title */}
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-white leading-tight uppercase">
-                  {m.text}
-                </h3>
+      {/* Progress Rail Header */}
+      <div className="hidden lg:grid grid-cols-5 gap-6 mb-8 pb-4 border-b border-white/5">
+        {MILESTONES.map((m, idx) => (
+          <div key={m.year} className="flex items-center gap-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
+            <span className="text-[10px] font-mono tracking-[0.2em] text-[#666] uppercase">
+              PHASE {String(idx + 1).padStart(2, '0')} // {m.year}
+            </span>
+          </div>
+        ))}
+      </div>
 
-                {/* Detail */}
-                <p className="text-sm sm:text-base text-[#888] leading-relaxed max-w-sm">
-                  {m.detail}
-                </p>
-
-                {/* Index */}
-                <div className="text-[10px] uppercase tracking-[0.2em] text-[#444] font-mono pt-4">
-                  {String(idx + 1).padStart(2, '0')} / {String(MILESTONES.length).padStart(2, '0')}
-                </div>
+      {/* Responsive Milestone Cards Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-4">
+        {MILESTONES.map((m, idx) => (
+          <motion.div
+            key={m.year}
+            initial={{ opacity: 0, y: 25 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 25 }}
+            transition={{ duration: 0.8, delay: idx * 0.1, ease }}
+            className="group relative p-6 sm:p-7 rounded-2xl border border-white/5 bg-[#0a0a0a]/60 hover:border-white/20 hover:bg-[#0d0d0d] transition-all duration-300 flex flex-col justify-between"
+          >
+            {/* Top Indicator */}
+            <div>
+              <div className="flex items-center justify-between gap-2 mb-4">
+                <span className="text-[10px] font-mono tracking-[0.2em] text-white/50 group-hover:text-white transition-colors">
+                  {m.status}
+                </span>
+                <span className="text-[10px] font-mono text-[#555]">
+                  {String(idx + 1).padStart(2, '0')}/05
+                </span>
               </div>
+
+              {/* Year */}
+              <div className="text-4xl sm:text-5xl font-bold tracking-tight text-white mb-4 group-hover:translate-x-1 transition-transform">
+                {m.year}
+              </div>
+
+              {/* Title */}
+              <h3 className="text-sm sm:text-base font-medium text-white/90 leading-snug mb-3">
+                {m.text}
+              </h3>
+
+              {/* Detail */}
+              <p className="text-xs text-[#777] leading-relaxed font-light">
+                {m.detail}
+              </p>
             </div>
-          ))}
-        </motion.div>
+
+            {/* Bottom Tag */}
+            <div className="pt-6 mt-6 border-t border-white/5">
+              <span className="text-[9px] font-mono tracking-[0.15em] text-[#555] uppercase block truncate group-hover:text-[#999] transition-colors">
+                {m.highlight}
+              </span>
+            </div>
+          </motion.div>
+        ))}
       </div>
     </section>
   );

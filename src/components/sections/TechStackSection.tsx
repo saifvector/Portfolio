@@ -56,7 +56,7 @@ export default function TechStackSection() {
               <motion.span
                 key={t.name}
                 style={{ y: yOffset }}
-                className={`${t.size} ${t.weight} uppercase tracking-tight text-[#333] hover:text-white transition-colors duration-500 cursor-default inline-block`}
+                className={`${t.size} ${t.weight} uppercase tracking-tight text-white/30 hover:text-white transition-colors duration-300 cursor-default inline-block`}
               >
                 {t.name}
               </motion.span>
