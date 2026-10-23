@@ -298,7 +298,7 @@ export function PerspectiveTunnelHero({
       ref={containerRef}
       data-lenis-prevent
       className={cn(
-        "relative h-[85vh] min-h-[600px] max-h-[920px] w-full overflow-hidden bg-[#050505] text-white select-none flex items-center justify-center rounded-3xl border border-white/5",
+        "relative h-[70vh] min-h-[480px] max-h-[720px] w-full overflow-hidden bg-[#050505] text-white select-none flex items-center justify-center rounded-3xl border border-white/5",
         className
       )}
       style={{

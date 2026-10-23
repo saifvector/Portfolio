@@ -35,7 +35,7 @@ export default function TechStackSection() {
     <section
       id="stack"
       ref={containerRef}
-      className="min-h-screen flex flex-col justify-center px-6 sm:px-12 md:px-20 py-32 overflow-hidden"
+      className="flex flex-col justify-center px-6 sm:px-12 md:px-20 py-16 sm:py-24 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto w-full space-y-12">
         {/* Label */}

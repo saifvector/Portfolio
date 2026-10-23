@@ -60,7 +60,7 @@ export default function PrinciplesSection() {
     <section
       id="principles"
       ref={containerRef}
-      style={{ height: `${PRINCIPLES.length * 100}vh` }}
+      style={{ height: `${PRINCIPLES.length * 50}vh` }}
     >
       <div className="sticky top-0 h-screen overflow-hidden">
         {PRINCIPLES.map((p, idx) => (

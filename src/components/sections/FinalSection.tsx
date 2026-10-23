@@ -12,7 +12,7 @@ export default function FinalSection() {
     <section
       id="contact"
       ref={ref}
-      className="min-h-screen flex flex-col items-center justify-center px-6 sm:px-12 md:px-20 py-32 text-center"
+      className="flex flex-col items-center justify-center px-6 sm:px-12 md:px-20 py-20 sm:py-28 text-center"
     >
       {/* Massive statement */}
       <div className="overflow-hidden">

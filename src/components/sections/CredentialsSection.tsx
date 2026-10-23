@@ -51,7 +51,7 @@ export default function CredentialsSection() {
     <section
       id="credentials"
       ref={ref}
-      className="min-h-screen flex items-center px-6 sm:px-12 md:px-20 py-32"
+      className="flex items-center px-6 sm:px-12 md:px-20 py-16 sm:py-24"
     >
       <div className="max-w-7xl mx-auto w-full space-y-14">
         {/* Label */}

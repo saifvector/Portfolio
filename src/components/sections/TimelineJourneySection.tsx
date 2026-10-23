@@ -30,7 +30,7 @@ export default function TimelineJourneySection() {
       id="journey"
       ref={containerRef}
       className="relative"
-      style={{ height: `${MILESTONES.length * 80}vh` }}
+      style={{ height: `${MILESTONES.length * 45}vh` }}
     >
       <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-center">
         {/* Section label */}

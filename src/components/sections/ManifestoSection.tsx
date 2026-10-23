@@ -59,7 +59,7 @@ export default function ManifestoSection() {
   });
 
   return (
-    <section id="manifesto" ref={containerRef} style={{ height: `${STATEMENTS.length * 100}vh` }}>
+    <section id="manifesto" ref={containerRef} style={{ height: `${STATEMENTS.length * 55}vh` }}>
       <div className="sticky top-0 h-screen overflow-hidden">
         {STATEMENTS.map((text, idx) => (
           <ManifestoLine

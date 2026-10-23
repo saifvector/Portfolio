@@ -21,7 +21,7 @@ export default function ProcessSection() {
     <section
       id="process"
       ref={ref}
-      className="min-h-screen flex items-center px-6 sm:px-12 md:px-20 py-32"
+      className="flex items-center px-6 sm:px-12 md:px-20 py-16 sm:py-24"
     >
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
         {/* Left: Label + Headline */}

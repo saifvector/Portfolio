@@ -322,7 +322,7 @@ function ProjectSection({ project, index }: { project: ProjectConfig; index: num
     <section
       id={project.id}
       ref={ref}
-      className="min-h-screen flex items-center px-6 sm:px-12 md:px-20 py-24 sm:py-32 scroll-mt-24"
+      className="flex items-center px-6 sm:px-12 md:px-20 py-16 sm:py-20 scroll-mt-24"
     >
       <div className={`max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center`}>
         {/* Text Column */}
@@ -403,14 +403,14 @@ export default function ProjectShowcase() {
   return (
     <div id="projects" className="relative">
       {/* ─── Works Wheel Interactive Showcase ─── */}
-      <section ref={introRef} className="pt-28 pb-10 px-6 sm:px-12 md:px-20 max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-white/10">
+      <section ref={introRef} className="pt-16 pb-8 px-6 sm:px-12 md:px-20 max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-white/10">
           <div>
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={isIntroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="flex items-center gap-3 mb-4"
+              className="flex items-center gap-3 mb-3"
             >
               <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
               <span className="text-[10px] font-mono tracking-[0.25em] text-[#888] uppercase">
@@ -439,7 +439,7 @@ export default function ProjectShowcase() {
         </div>
 
         {/* 3D Wheel Stage */}
-        <div className="w-full h-[76vh] min-h-[560px] max-h-[820px] relative overflow-hidden my-8 rounded-2xl border border-white/5 bg-[#050505]/40 shadow-2xl">
+        <div className="w-full h-[65vh] min-h-[480px] max-h-[700px] relative overflow-hidden my-6 rounded-2xl border border-white/5 bg-[#050505]/40 shadow-2xl">
           <WorksWheel items={WHEEL_PROJECTS} label="SYSTEMS // '26" action="Inspect" />
         </div>
       </section>
@@ -452,10 +452,10 @@ export default function ProjectShowcase() {
       </div>
 
       {/* ─── 3D Perspective Tunnel Corridor ─── */}
-      <section className="pt-24 pb-28 px-6 sm:px-12 md:px-20 max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-white/10 mb-8">
+      <section className="pt-14 pb-16 px-6 sm:px-12 md:px-20 max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-white/10 mb-6">
           <div>
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex items-center gap-3 mb-3">
               <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
               <span className="text-[10px] font-mono tracking-[0.25em] text-[#888] uppercase">
                 Spatial Corridor // Research Depth
