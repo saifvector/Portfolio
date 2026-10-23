@@ -312,7 +312,7 @@ const VISUAL_MAP: Record<string, React.FC> = {
 
 function ProjectSection({ project, index }: { project: ProjectConfig; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, amount: 0.1 });
+  const isInView = useInView(ref, { once: true, margin: "300px 0px 300px 0px" });
   const ease = [0.16, 1, 0.3, 1] as const;
   const isEven = index % 2 === 0;
 
@@ -398,7 +398,7 @@ function ProjectSection({ project, index }: { project: ProjectConfig; index: num
 
 export default function ProjectShowcase() {
   const introRef = useRef<HTMLDivElement>(null);
-  const isIntroInView = useInView(introRef, { once: true, amount: 0.1 });
+  const isIntroInView = useInView(introRef, { once: true, margin: "300px 0px 300px 0px" });
 
   return (
     <div id="projects" className="relative">

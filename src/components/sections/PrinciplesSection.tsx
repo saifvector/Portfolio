@@ -12,7 +12,7 @@ const PRINCIPLES = [
 
 export default function PrinciplesSection() {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, amount: 0.1 });
+  const isInView = useInView(ref, { once: true, margin: "300px 0px 300px 0px" });
 
   return (
     <section

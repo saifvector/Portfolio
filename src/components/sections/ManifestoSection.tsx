@@ -12,7 +12,7 @@ const STATEMENTS = [
 
 export default function ManifestoSection() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { once: true, amount: 0.1 });
+  const isInView = useInView(containerRef, { once: true, margin: "300px 0px 300px 0px" });
 
   return (
     <section
