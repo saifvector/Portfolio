@@ -2,6 +2,25 @@
   "name": "portfolio",
   "version": "0.1.0",
   "private": true,
+  "description": "Personal portfolio and research laboratory of Shaik Saifur Rahman — AI Engineer, Data Scientist, and Intelligent Systems Architect featuring 3D interactive spatial components and production-grade case studies.",
+  "author": "Shaik Saifur Rahman <saifur.rahman.ai@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/saifvector/Portfolio.git"
+  },
+  "homepage": "https://github.com/saifvector/Portfolio#readme",
+  "keywords": [
+    "portfolio",
+    "ai-engineer",
+    "data-scientist",
+    "intelligent-systems",
+    "nextjs",
+    "threejs",
+    "framer-motion",
+    "cortex-nids",
+    "deep-learning",
+    "tailwind-css"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
