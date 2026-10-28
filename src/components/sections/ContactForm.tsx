@@ -97,8 +97,8 @@ export function ContactForm({ configured, fallbackEmail }: { configured: boolean
 
   const inputCls = (invalid: boolean) =>
     cn(
-      "min-h-12 w-full border bg-surface px-4 py-3 text-text placeholder:text-text-muted/60 transition-colors focus:border-accent focus:outline-none focus-visible:outline-2 focus-visible:outline-accent",
-      invalid ? "border-warning" : "border-border-strong",
+      "min-h-12 w-full border bg-surface px-4 py-3 text-text placeholder:text-text-muted/60 transition-colors focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
+      invalid ? "border-warning/60" : "border-border-strong focus:border-accent",
     );
 
   const showBanner = status !== "idle" && status !== "submitting" && status !== "validation";
@@ -107,10 +107,10 @@ export function ContactForm({ configured, fallbackEmail }: { configured: boolean
   return (
     <div className="flex flex-col gap-6">
       <div aria-live="polite" role="status" className="empty:hidden">
-        {status === "validation" || errorCount > 0 ? (
-          <p className="text-warning text-sm">
-            <span aria-hidden="true">! </span>Please fix{" "}
-            {errorCount === 1 ? "the highlighted field" : `${errorCount} highlighted fields`}.
+        {errorCount > 0 ? (
+          <p className="text-text-muted flex items-center gap-2 text-sm">
+            <span aria-hidden="true" className="bg-warning inline-block size-1.5 rounded-full" />
+            Please check {errorCount === 1 ? "the highlighted field" : `the ${errorCount} highlighted fields`}.
           </p>
         ) : null}
       </div>
@@ -132,67 +132,64 @@ export function ContactForm({ configured, fallbackEmail }: { configured: boolean
           {message[status]}
         </div>
       )}
-      <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-6" aria-label="Contact form">
-        {fields.map((f) => (
-          <div key={f.name} className="flex flex-col gap-2">
-            <label htmlFor={`cf-${f.name}`} className="text-text text-sm">
-              {f.label}
+      {status !== "not_configured" && (
+        <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-6" aria-label="Contact form">
+          {fields.map((f) => (
+            <div key={f.name} className="flex flex-col gap-2">
+              <label htmlFor={`cf-${f.name}`} className="text-text text-sm">
+                {f.label}
+              </label>
+              <input
+                id={`cf-${f.name}`}
+                type={f.type}
+                autoComplete={f.autoComplete}
+                aria-invalid={Boolean(errors[f.name])}
+                aria-describedby={errors[f.name] ? `cf-${f.name}-err` : undefined}
+                className={inputCls(Boolean(errors[f.name]))}
+                {...register(f.name)}
+              />
+              {errors[f.name] && (
+                <p id={`cf-${f.name}-err`} className="text-warning text-xs">
+                  {errors[f.name]?.message}
+                </p>
+              )}
+            </div>
+          ))}
+          <div className="flex flex-col gap-2">
+            <label htmlFor="cf-message" className="text-text text-sm">
+              Message
             </label>
-            <input
-              id={`cf-${f.name}`}
-              type={f.type}
-              autoComplete={f.autoComplete}
-              aria-invalid={Boolean(errors[f.name])}
-              aria-describedby={errors[f.name] ? `cf-${f.name}-err` : undefined}
-              disabled={status === "not_configured"}
-              className={inputCls(Boolean(errors[f.name]))}
-              {...register(f.name)}
+            <textarea
+              id="cf-message"
+              rows={6}
+              aria-invalid={Boolean(errors.message)}
+              aria-describedby={errors.message ? "cf-message-err" : "cf-message-hint"}
+              className={cn(inputCls(Boolean(errors.message)), "resize-y")}
+              {...register("message")}
             />
-            {errors[f.name] && (
-              <p id={`cf-${f.name}-err`} className="text-warning text-sm">
-                <span aria-hidden="true">! </span>
-                {errors[f.name]?.message}
+            {errors.message ? (
+              <p id="cf-message-err" className="text-warning text-xs">
+                {errors.message.message}
+              </p>
+            ) : (
+              <p id="cf-message-hint" className="text-text-muted text-xs">
+                At least 20 characters.
               </p>
             )}
           </div>
-        ))}
-        <div className="flex flex-col gap-2">
-          <label htmlFor="cf-message" className="text-text text-sm">
-            Message
-          </label>
-          <textarea
-            id="cf-message"
-            rows={6}
-            aria-invalid={Boolean(errors.message)}
-            aria-describedby={errors.message ? "cf-message-err" : "cf-message-hint"}
-            disabled={status === "not_configured"}
-            className={cn(inputCls(Boolean(errors.message)), "resize-y")}
-            {...register("message")}
-          />
-          {errors.message ? (
-            <p id="cf-message-err" className="text-warning text-sm">
-              <span aria-hidden="true">! </span>
-              {errors.message.message}
-            </p>
-          ) : (
-            <p id="cf-message-hint" className="text-text-muted text-xs">
-              At least 20 characters.
-            </p>
-          )}
-        </div>
-        <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
-          <label htmlFor="cf-company">Company</label>
-          <input id="cf-company" type="text" tabIndex={-1} autoComplete="off" {...register("company")} />
-        </div>
-        <button
-          type="submit"
-          disabled={status === "submitting" || status === "not_configured"}
-          aria-disabled={status === "submitting" || status === "not_configured"}
-          className="bg-accent text-bg hover:bg-accent-strong inline-flex min-h-12 items-center justify-center self-start px-8 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50"
-        >
-          {status === "submitting" ? "Sending…" : "Send message"}
-        </button>
-      </form>
+          <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
+            <label htmlFor="cf-company">Company</label>
+            <input id="cf-company" type="text" tabIndex={-1} autoComplete="off" {...register("company")} />
+          </div>
+          <button
+            type="submit"
+            disabled={status === "submitting"}
+            className="bg-accent text-bg hover:bg-accent-strong inline-flex min-h-12 items-center justify-center self-start px-8 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            {status === "submitting" ? "Sending…" : "Send message"}
+          </button>
+        </form>
+      )}
     </div>
   );
 }

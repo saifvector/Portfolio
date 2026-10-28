@@ -3,7 +3,7 @@ import { canonical } from "@/lib/utils";
 import { skillCategories } from "@/data/skills";
 import { renderable } from "@/lib/evidence";
 import { resumeHref } from "@/data/site-config";
-import { ButtonLink, UnavailableButton } from "@/components/ui/Button";
+import { ButtonLink } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
   title: "About",
@@ -47,15 +47,13 @@ export default function AboutPage() {
             interaction and building software that holds up.
           </p>
         </div>
-        <aside className="col-span-4 flex flex-col gap-4 md:col-span-8 lg:col-span-4 lg:col-start-9 lg:row-start-2">
-          {resume ? (
+        {resume && (
+          <aside className="col-span-4 flex flex-col gap-4 md:col-span-8 lg:col-span-4 lg:col-start-9 lg:row-start-2">
             <ButtonLink href={resume} variant="ghost" download>
               Download résumé (PDF)
             </ButtonLink>
-          ) : (
-            <UnavailableButton label="Résumé" reason="coming soon" />
-          )}
-        </aside>
+          </aside>
+        )}
       </section>
 
       <section

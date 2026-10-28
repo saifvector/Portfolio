@@ -12,8 +12,8 @@
   --color-text-muted: #a1a1aa;
   --color-border: rgba(255, 255, 255, 0.08);
   --color-border-strong: rgba(255, 255, 255, 0.16);
-  --color-warning: #d9776b;
-  --color-warning-bg: rgba(217, 119, 107, 0.12);
+  --color-warning: #c98a7e;
+  --color-warning-bg: rgba(201, 138, 126, 0.08);
 
   --font-display: var(--font-instrument-serif), "Times New Roman", serif;
   --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;

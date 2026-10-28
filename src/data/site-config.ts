@@ -10,7 +10,7 @@ export const siteConfig = {
     "Explore Saif's software engineering projects, AI experiments, machine learning research, cybersecurity work, and interactive 3D portfolio.",
   location: "Ongole, Andhra Pradesh, India",
 
-  // TODO(saif): confirm contact email. Links render disabled while null.
+  // TODO(saif): confirm contact email. Email links are hidden while null.
   email: null as string | null,
   // GitHub account that owns the project repositories (verified via the repos themselves).
   githubUrl: "https://github.com/saifvector" as string | null,
@@ -23,7 +23,7 @@ export const siteConfig = {
    */
   availability: null as { label: string } | null,
 
-  /** Drop the PDF at public/resume/<this file name> and the button enables itself at build time. */
+  /** Drop the PDF at public/resume/<this file name>; the download button appears at build time. Hidden otherwise. */
   resumeFile: "Shaik-Saifur-Rahman-Resume.pdf",
 } as const;
 

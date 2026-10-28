@@ -33,16 +33,3 @@ export function ButtonLink({
     </Link>
   );
 }
-
-/** A visibly disabled control for links that don't exist yet. Not focusable, announced via text. */
-export function UnavailableButton({ label, reason, className }: { label: string; reason: string; className?: string }) {
-  return (
-    <span
-      className={cn(base, "border-border-strong text-text-muted cursor-not-allowed border border-dashed", className)}
-      aria-disabled="true"
-    >
-      {label}
-      <span className="text-text-muted text-xs">· {reason}</span>
-    </span>
-  );
-}

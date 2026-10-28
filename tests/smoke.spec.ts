@@ -79,7 +79,8 @@ test("skip link moves focus to main", async ({ page, browserName }) => {
 test("contact form shows not-configured state without provider env", async ({ page }) => {
   await page.goto("/contact");
   await expect(page.getByText("Contact form not configured", { exact: false })).toBeVisible();
-  await expect(page.getByRole("button", { name: "Send message" })).toBeDisabled();
+  await expect(page.getByRole("button", { name: "Send message" })).toHaveCount(0);
+  await expect(page.getByRole("textbox")).toHaveCount(0);
 });
 
 test("contact API rejects when not configured", async ({ request }) => {

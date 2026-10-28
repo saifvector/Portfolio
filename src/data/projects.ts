@@ -255,7 +255,6 @@ export const projects: Project[] = [
       illustrative: true,
       alt: "Illustrative forensic inspection view of a sample app: metadata, requested permissions as observed evidence, and a separate model risk estimate.",
     },
-    repoUrl: "https://github.com/saifvector/MultiModal-Android-Fraud-Detection",
     featured: true,
     source:
       "github.com/saifvector/MultiModal-Android-Fraud-Detection — backend/app/ml/{static_analysis,nlp,behavior_analysis,fusion}, reports/evaluation_report.md",

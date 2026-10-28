@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProject, projects } from "@/data/projects";
 import { renderable } from "@/lib/evidence";
-import { ButtonLink, UnavailableButton } from "@/components/ui/Button";
+import { ButtonLink } from "@/components/ui/Button";
 import { Disclaimer } from "@/components/projects/Disclaimer";
 import { StatusBadge } from "@/components/projects/StatusBadge";
 import { ProjectVisual } from "@/components/projects/visuals/ProjectVisual";
@@ -63,14 +63,12 @@ export default async function ProjectPage(props: PageProps<"/projects/[slug]">) 
               Source on GitHub<span className="sr-only"> (opens in a new tab)</span>
             </ButtonLink>
           ) : (
-            <UnavailableButton label="Source" reason="not linked yet" />
+            <p className="text-text-muted text-sm">Source code isn&apos;t public yet.</p>
           )}
-          {project.demoUrl ? (
+          {project.demoUrl && (
             <ButtonLink href={project.demoUrl} external>
               Live demo<span className="sr-only"> (opens in a new tab)</span>
             </ButtonLink>
-          ) : (
-            <UnavailableButton label="Live demo" reason="not deployed" />
           )}
         </div>
       </header>
