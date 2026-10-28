@@ -1,168 +1,85 @@
-# Shaik Saifur Rahman // Intelligent Systems & AI Engineering Portfolio
+# Saif: portfolio
 
-<div align="center">
+Personal portfolio of **Shaik Saifur Rahman (Saif)**, a B.Tech student in AI & Data Science. It's built with Next.js 16 (App Router), React 19, TypeScript (strict), Tailwind CSS v4, GSAP and React Three Fiber.
 
-![Next.js](https://img.shields.io/badge/Next.js%2016-black?style=for-the-badge&logo=next.js&logoColor=white)
-![React](https://img.shields.io/badge/React%2019-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![TypeScript](https://img.shields.io/badge/TypeScript%205-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS_v4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
-![Three.js](https://img.shields.io/badge/Three.js-black?style=for-the-badge&logo=three.js&logoColor=white)
-![Framer Motion](https://img.shields.io/badge/Framer_Motion-black?style=for-the-badge&logo=framer&logoColor=blue)
+Every project claim lives in a typed data layer (`src/data/projects.ts`) with an evidence level of `verified`, `reported` or `unverified`. Only the first two are rendered. How each claim was checked is written up in [`docs/EVIDENCE.md`](docs/EVIDENCE.md).
 
-<br/>
+## Requirements
 
-**Personal portfolio, research laboratory, and systems engineering showcase of Shaik Saifur Rahman.**  
-Bridging theoretical artificial intelligence, clinical vision, cyber threat detection, and production-grade architectures.
+- Node.js 20.9+ (developed on Node 22)
+- npm 10+
 
-[Live Demonstration](https://github.com/saifvector/Portfolio) • [Report Issue](https://github.com/saifvector/Portfolio/issues) • [Contact Author](mailto:saifur.rahman.ai@gmail.com)
+## Install and run
 
-</div>
-
----
-
-## ✦ Overview
-
-This portfolio is an interactive, editorial-grade web application built to showcase applied AI research, full-stack machine learning architectures, and production-grade intelligent systems. Designed with a Swiss minimalist dark aesthetic (`#050505`), custom Lenis momentum scrolling, and custom 3D spatial canvas interfaces.
-
-### Key Highlights
-- **Spatial 3D Indexing**: Custom interactive cylindrical carousel (`WorksWheel`) and 3D research tunnel corridor (`PerspectiveTunnelHero`) built with Three.js and Framer Motion.
-- **Continuous Editorial Roadmap**: Zero-lag responsive timeline documenting academic and engineering milestones from foundational mathematics to high-throughput production systems.
-- **Deep-Dive Case Studies**: End-to-end telemetry, accuracy curves, confusion matrix metrics, and architecture explanations for 4 core AI engineering projects.
-- **Performance Optimized**: Sub-millisecond rendering, zero layout shift (CLS 0), pre-rendered viewport viewports (`margin: 300px`), and 100% TypeScript type safety.
-
----
-
-## ✦ Featured Systems & Research
-
-### 1. [CORTEX NIDS // Network Threat Defense](#)
-- **Domain**: Cybersecurity AI & Automated Threat Mitigation
-- **Key Metrics**: `99.77%` Accuracy • `2.91ms` Latency • `70+` Test Suites
-- **Architecture**: Real-time packet parsing engine coupled with gradient-boosted decision trees, low-latency telemetry logging, and SHAP explainability pipelines for automated threat isolation.
-
-### 2. [Brain Tumor AI // Clinical MRI Segmentation](#)
-- **Domain**: Healthcare Computer Vision & Diagnostic Support
-- **Key Metrics**: `88.39%` Dice Coefficient • `99.55%` Specificity • `3,929` Scans
-- **Architecture**: Modified U-Net segmentation pipeline trained on multi-modal MRI scans (T1, T1Gd, T2, FLAIR) for automated tumor boundary localization with clinical decision support.
-
-### 3. [Nutrient Deficiency AI // Predictive Healthcare](#)
-- **Domain**: Predictive Medicine & Bio-signal Interpretability
-- **Key Metrics**: `11` Nutrient Deficiencies • `45ms` Inference • `SHAP` Explainability
-- **Architecture**: Symptom-to-biomarker mapping engine diagnosing macro- and micronutrient deficiencies prior to acute symptomatic progression, backed by interpretable attribution weights.
-
-### 4. [Aura Voice System // Edge Intelligence](#)
-- **Domain**: Privacy-First Local Automation
-- **Key Metrics**: `100%` Local Processing • Zero Cloud Dependence • Sub-100ms Voice Action
-- **Architecture**: Edge-native speech recognition pipeline and lightweight quantized local LLMs for hands-free operating system telemetry and workflow automation without external network transmission.
-
----
-
-## ✦ Technical Stack
-
-| Category | Technologies |
-| :--- | :--- |
-| **Machine Learning & AI** | Python, PyTorch, Scikit-Learn, XGBoost, OpenCV, SHAP, Hugging Face, U-Net |
-| **Backend & Cloud** | FastAPI, Docker, Linux, AWS Cloud Architecture, PostgreSQL, VMware |
-| **Frontend & Visualization** | Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS v4, Three.js, Framer Motion, Lenis Scroll |
-| **Testing & CI/CD** | ESLint, Turbopack, Git, GitHub Actions, Vercel |
-
----
-
-## ✦ Engineering Principles
-
-1. **Think Like a Researcher** — Ground every project in first-principles inquiry, theoretical rigor, and algorithmic validity.
-2. **Build Like an Engineer** — Implement scalable schemas, deterministic telemetry, and production-grade error resilience.
-3. **Ship Like a Startup** — Maintain high execution velocity, rapid validation cycles, and continuous delivery.
-4. **Solve Real Problems** — Focus on high-stakes applications across healthcare, cybersecurity, and intelligent automation.
-
----
-
-## ✦ Getting Started
-
-### Prerequisites
-- [Node.js](https://nodejs.org/) (version `18.18.0` or higher recommended)
-- `npm`, `pnpm`, or `yarn`
-
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/saifvector/Portfolio.git
-   cd Portfolio
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Launch the development server:
-   ```bash
-   npm run dev
-   ```
-
-4. Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
-
-### Building for Production
-
-Compile optimized static and SSR assets:
 ```bash
-npm run build
-npm run start
+npm ci
+cp .env.example .env.local   # optional, see below
+npm run dev                  # http://localhost:3000
 ```
 
----
+## Scripts
 
-## ✦ Project Structure
+| Command                           | What it does                                                                                                                          |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `npm run dev`                     | Development server                                                                                                                    |
+| `npm run build`                   | Production build                                                                                                                      |
+| `npm start`                       | Serve the production build                                                                                                            |
+| `npm run lint`                    | ESLint (Next core-web-vitals + TypeScript)                                                                                            |
+| `npm run typecheck`               | `tsc --noEmit`                                                                                                                        |
+| `npm run format` / `format:check` | Prettier (with the Tailwind class-sorting plugin)                                                                                     |
+| `npm run test:e2e`                | Playwright smoke tests against `next start` (run `npm run build` first; install browsers once with `npx playwright install chromium`) |
+| `npm run check`                   | lint + typecheck + build                                                                                                              |
 
-```text
-portfolio/
-├── src/
-│   ├── app/
-│   │   ├── layout.tsx                # Metadata, fonts, viewport & SEO configuration
-│   │   ├── page.tsx                  # Main single-page portfolio experience
-│   │   ├── works-wheel/page.tsx      # Standalone 3D wheel route
-│   │   └── tunnel/page.tsx           # Standalone 3D tunnel corridor route
-│   ├── components/
-│   │   ├── canvas/                   # Ambient Three.js particle canvas
-│   │   ├── providers/                # Lenis smooth scroll provider
-│   │   ├── sections/                 # Modular editorial sections (01 to 10)
-│   │   │   ├── OpeningSection.tsx
-│   │   │   ├── ManifestoSection.tsx
-│   │   │   ├── IdentitySection.tsx
-│   │   │   ├── TimelineJourneySection.tsx
-│   │   │   ├── ProjectShowcase.tsx
-│   │   │   ├── ProcessSection.tsx
-│   │   │   ├── TechStackSection.tsx
-│   │   │   ├── PrinciplesSection.tsx
-│   │   │   ├── CredentialsSection.tsx
-│   │   │   └── FinalSection.tsx
-│   │   └── ui/                       # Reusable UI & 3D components
-│   │       ├── works-wheel.tsx       # 3D cylindrical carousel
-│   │       ├── perspective-tunnel-hero.tsx # 3D Z-space corridor
-│   │       ├── CustomCursor.tsx
-│   │       └── Navbar.tsx
-│   └── lib/
-│       └── utils.ts                  # Classname merging & utility helpers
-├── public/                           # Static assets, icons, and diagrams
-├── next.config.ts                    # Next.js configuration
-├── tailwind.config.ts                # Tailwind design tokens
-└── package.json
+## Environment variables
+
+All are optional. Without them the site still builds and runs.
+
+| Variable               | Purpose                                                                                                                                                                                 |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `NEXT_PUBLIC_SITE_URL` | Public origin, e.g. `https://saif.dev`, with no trailing slash. Enables canonical URLs, `sitemap.xml` entries and absolute Open Graph URLs. If it's unset they're omitted, not guessed. |
+| `RESEND_API_KEY`       | Resend API key for the contact form.                                                                                                                                                    |
+| `CONTACT_TO_EMAIL`     | Inbox that receives contact messages.                                                                                                                                                   |
+| `RESEND_FROM_EMAIL`    | Sender address on a domain verified in Resend. Defaults to `onboarding@resend.dev`, which only delivers to your own Resend account email.                                               |
+
+If `RESEND_API_KEY` or `CONTACT_TO_EMAIL` is missing, the contact page says **"Contact form not configured"** and disables the form. It never reports a success that didn't happen. The success state only appears after Resend returns an email id.
+
+The contact route (`src/app/api/contact/route.ts`) validates input with the Zod schema it shares with the client (`src/lib/validation.ts`), rejects a filled honeypot, and rate-limits each IP to 5 requests per 10 minutes. That limiter is in memory, per serverless instance (see `src/lib/rate-limit.ts`). For stronger guarantees, swap in a shared store such as Upstash Redis.
+
+## Editing content
+
+- **Personal details**: `src/data/site-config.ts`. Set `email`, `linkedinUrl` and `availability`. Missing values hide the control or render it disabled.
+- **Résumé**: put the PDF at `public/resume/Shaik-Saifur-Rahman-Resume.pdf`. The download button turns itself on at build time.
+- **Projects**: `src/data/projects.ts`. Tag every new claim with its evidence level, and add `repoUrl` / `demoUrl` only when they really exist.
+- **Skills**: `src/data/skills.ts` uses familiarity groups, not percentages.
+
+## Structure
+
+```
+src/
+  app/            routes: /, /projects, /projects/[slug], /about, /contact, 404, api/contact, sitemap, robots, OG image
+  components/
+    layout/       header, mobile nav, footer
+    sections/     home sections, contact form
+    projects/     project index, disclaimers, status, per-project visuals
+    three/        hero scene (R3F), capability-gated, with SVG fallback
+    ui/           buttons, headings, scroll reveal
+  data/           typed content: site config, projects, skills, navigation
+  lib/            evidence filter, validation, rate limit, capability detection, motion constants
+  styles/         design tokens (Tailwind v4 @theme)
+tests/            Playwright smoke tests
 ```
 
----
+## 3D hero
 
-## ✦ Author & Connect
+The hero object is procedural: two tori and a torus knot, no model files. The scene is code-split with `next/dynamic` (`ssr: false`) and only starts after the browser goes idle. An SVG poster shows while it loads, when WebGL is missing, or if the scene throws an error.
 
-**Shaik Saifur Rahman**  
-*AI Engineer & Intelligent Systems Architect*  
-B.Tech in Artificial Intelligence & Data Science
+Quality tier is chosen from capabilities only (WebGL support, `prefers-reduced-motion`, `hardwareConcurrency`, viewport width, pointer type). DPR is capped at 1.75 on capable devices and 1.25 on lower tiers. Rendering pauses when the hero is off-screen, and geometries and materials are disposed on unmount. With reduced motion turned on, the object is drawn once in a static pose, with no rotation, parallax or scroll transform.
 
-- **GitHub**: [@saifvector](https://github.com/saifvector)
-- **LinkedIn**: [Shaik Saifur Rahman](https://linkedin.com/in/shaiksaifurrahman)
-- **Email**: [saifur.rahman.ai@gmail.com](mailto:saifur.rahman.ai@gmail.com)
+## Deploying to Vercel
 
----
+1. Push this repository to GitHub and import it at <https://vercel.com/new>. The framework preset is detected as Next.js, and the default build (`npm run build`) and output settings are fine.
+2. In **Project → Settings → Environment Variables**, add `NEXT_PUBLIC_SITE_URL` and, for the contact form, `RESEND_API_KEY`, `CONTACT_TO_EMAIL` and optionally `RESEND_FROM_EMAIL`.
+3. Deploy. Environment variables are read at build time for the static contact page, so redeploy after changing them.
+4. In Resend, verify the sending domain before setting `RESEND_FROM_EMAIL`.
 
-## ✦ License
-
-This project is licensed under the [MIT License](LICENSE).
+Or use the CLI: `npm i -g vercel && vercel link && vercel --prod`.
