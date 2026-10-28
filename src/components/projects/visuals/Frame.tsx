@@ -12,9 +12,9 @@ export function VisualFrame({
 }) {
   return (
     <figure className="flex flex-col gap-3">
-      <div className="border-border bg-surface relative overflow-hidden border">
+      <div className="border-border bg-surface overflow-hidden border">
         {illustrative && (
-          <div className="absolute top-3 left-3 z-10">
+          <div className="border-border border-b px-3 py-2">
             <IllustrativeLabel />
           </div>
         )}

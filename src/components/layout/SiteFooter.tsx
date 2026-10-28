@@ -16,7 +16,10 @@ export function SiteFooter() {
           <ul className="flex flex-col gap-1 text-sm">
             {navigation.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="text-text-muted hover:text-text inline-flex min-h-11 items-center">
+                <Link
+                  href={item.href}
+                  className="text-text-muted hover:text-text inline-flex min-h-11 min-w-11 items-center"
+                >
                   {item.label}
                 </Link>
               </li>
@@ -31,7 +34,7 @@ export function SiteFooter() {
                   href={siteConfig.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-text-muted hover:text-text inline-flex min-h-11 items-center"
+                  className="text-text-muted hover:text-text inline-flex min-h-11 min-w-11 items-center"
                 >
                   GitHub<span className="sr-only"> (opens in a new tab)</span>
                 </a>
@@ -43,7 +46,7 @@ export function SiteFooter() {
                   href={siteConfig.linkedinUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-text-muted hover:text-text inline-flex min-h-11 items-center"
+                  className="text-text-muted hover:text-text inline-flex min-h-11 min-w-11 items-center"
                 >
                   LinkedIn<span className="sr-only"> (opens in a new tab)</span>
                 </a>

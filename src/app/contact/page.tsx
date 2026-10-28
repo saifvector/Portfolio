@@ -23,7 +23,7 @@ export default function ContactPage() {
           {siteConfig.email && (
             <li>
               <a
-                className="text-text hover:text-accent inline-flex min-h-11 items-center"
+                className="text-text hover:text-accent inline-flex min-h-11 min-w-11 items-center"
                 href={`mailto:${siteConfig.email}`}
               >
                 {siteConfig.email}
@@ -33,7 +33,7 @@ export default function ContactPage() {
           {siteConfig.githubUrl && (
             <li>
               <a
-                className="text-text hover:text-accent inline-flex min-h-11 items-center"
+                className="text-text hover:text-accent inline-flex min-h-11 min-w-11 items-center"
                 href={siteConfig.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -45,7 +45,7 @@ export default function ContactPage() {
           {siteConfig.linkedinUrl && (
             <li>
               <a
-                className="text-text hover:text-accent inline-flex min-h-11 items-center"
+                className="text-text hover:text-accent inline-flex min-h-11 min-w-11 items-center"
                 href={siteConfig.linkedinUrl}
                 target="_blank"
                 rel="noopener noreferrer"
