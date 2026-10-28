@@ -1,13 +1,10 @@
-import { MetadataRoute } from 'next';
+import type { MetadataRoute } from "next";
+import { siteUrl } from "@/lib/utils";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://saifur-ai.vercel.app';
-
+  const base = siteUrl();
   return {
-    rules: {
-      userAgent: '*',
-      allow: '/',
-    },
-    sitemap: `${baseUrl}/sitemap.xml`,
+    rules: { userAgent: "*", allow: "/" },
+    ...(base ? { sitemap: `${base}/sitemap.xml` } : {}),
   };
 }

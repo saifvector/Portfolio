@@ -1,110 +1,81 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Instrument_Serif } from "next/font/google";
 import "./globals.css";
-import JsonLd from "../components/seo/JsonLd";
+import { SiteHeader } from "@/components/layout/SiteHeader";
+import { SiteFooter } from "@/components/layout/SiteFooter";
+import { sameAsLinks, siteConfig } from "@/data/site-config";
+import { siteUrl } from "@/lib/utils";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const geist = Geist({ subsets: ["latin"], variable: "--font-geist", display: "swap" });
+const instrument = Instrument_Serif({
   subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-instrument-serif",
   display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-export const viewport: Viewport = {
-  themeColor: "#050505",
-  width: "device-width",
-  initialScale: 1,
-  maximumScale: 5,
-};
+const url = siteUrl();
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://saifur-ai.vercel.app"),
-  title: {
-    default: "SHAIK SAIFUR RAHMAN | AI Engineer, Data Scientist & System Builder",
-    template: "%s | Shaik Saifur Rahman"
-  },
-  description: "Portfolio and research laboratory of Shaik Saifur Rahman — AI Engineer, Data Scientist, and Intelligent Systems Developer specializing in cybersecurity AI, healthcare computer vision, explainable AI, and low-latency systems.",
-  keywords: [
-    "Shaik Saifur Rahman",
-    "AI Engineer",
-    "Data Scientist",
-    "Intelligent Systems",
-    "CORTEX NIDS",
-    "Cybersecurity AI",
-    "Brain Tumor MRI Segmentation",
-    "U-Net PyTorch",
-    "Medical AI",
-    "Nutrient Deficiency AI",
-    "Explainable AI",
-    "SHAP",
-    "FastAPI",
-    "Deep Learning",
-    "Andhra Pradesh AI Engineer",
-    "QIS College AI & Data Science"
-  ],
-  authors: [{ name: "Shaik Saifur Rahman", url: "https://saifur-ai.vercel.app" }],
-  creator: "Shaik Saifur Rahman",
-  publisher: "Shaik Saifur Rahman",
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
+  ...(url ? { metadataBase: new URL(url), alternates: { canonical: "/" } } : {}),
+  title: { default: siteConfig.title, template: "%s — Saif" },
+  description: siteConfig.description,
+  authors: [{ name: siteConfig.name }],
   openGraph: {
     type: "website",
-    locale: "en_US",
-    url: "https://saifur-ai.vercel.app",
-    siteName: "Shaik Saifur Rahman // AI Research & Intelligent Systems",
-    title: "SHAIK SAIFUR RAHMAN | AI Engineer & Data Scientist",
-    description: "Building Intelligent Systems That Solve Real-World Problems across Cybersecurity, Healthcare AI, and Computer Vision.",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Shaik Saifur Rahman - AI Engineer Portfolio & Research Laboratory",
-      },
-    ],
+    title: siteConfig.title,
+    description: siteConfig.description,
+    siteName: "Saif",
+    locale: "en_IN",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "SHAIK SAIFUR RAHMAN | AI Engineer & Data Scientist",
-    description: "Building Intelligent Systems That Solve Real-World Problems.",
-    creator: "@saifur_ai",
-    images: ["/og-image.png"],
-  },
-  alternates: {
-    canonical: "https://saifur-ai.vercel.app",
+  twitter: { card: "summary_large_image", title: siteConfig.title, description: siteConfig.description },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0a0a0a",
+  colorScheme: "dark",
+};
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: siteConfig.name,
+  alternateName: siteConfig.displayName,
+  jobTitle: "Software Developer and AI & Data Science student",
+  ...(url ? { url } : {}),
+  ...(sameAsLinks().length ? { sameAs: sameAsLinks() } : {}),
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "QIS College of Engineering and Technology",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Ongole",
+      addressRegion: "Andhra Pradesh",
+      addressCountry: "IN",
+    },
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} dark`}
-      suppressHydrationWarning
-    >
-      <head>
-        <JsonLd />
-      </head>
-      <body className="min-h-screen bg-[#050505] text-white selection:bg-white selection:text-[#050505] antialiased">
-        {children}
+    <html lang="en" className={`${geist.variable} ${instrument.variable}`}>
+      <body className="bg-bg text-text">
+        <a
+          href="#main"
+          className="sr-only-focusable bg-accent text-bg fixed top-4 left-4 z-50 px-4 py-3 text-sm font-medium"
+        >
+          Skip to content
+        </a>
+        <SiteHeader />
+        <main id="main" tabIndex={-1} className="outline-none">
+          {children}
+        </main>
+        <SiteFooter />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd).replace(/</g, "\\u003c") }}
+        />
       </body>
     </html>
   );
